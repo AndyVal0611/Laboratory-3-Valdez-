@@ -31,7 +31,7 @@ Employee_name = input("Enter Employee's name: ")
 Salary_cutoff_date = input("Enter Salary Cut-off Date: ")
 Pay_period = input("Enter Pay Period: ")
 
-#input the rate per hour, number of hours, overtime hours, absent hours, and tardy hours per payday of the employee
+#input the rate per hour, number of hours, overtime hours, absent hours, honorarium, and tardy hours per payday of the employee
 print("                                                                                                               ")
 Rate_per_hour = float(input("Enter Employee's rate per hour: "))
 Hours_per_payday = float(input("Enter Employee's number of hours per payday: "))
