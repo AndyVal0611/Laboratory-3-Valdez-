@@ -22,7 +22,7 @@ Deductions = 0
 gross_earnings = 0
 Net_pay = 0
 
-#input the required data for the employee
+#input the employee's information
 print("-------------------------------------------EMPLOYEE'S INFORMATION----------------------------------------------")
 Company = input("Enter Company name: ")
 Department = input("Enter Department name: ")
@@ -31,7 +31,7 @@ Employee_name = input("Enter Employee's name: ")
 Salary_cutoff_date = input("Enter Salary Cut-off Date: ")
 Pay_period = input("Enter Pay Period: ")
 
-#input the rate per hour, number of hours, overtime hours, absent hours, honorarium, and tardy hours per payday of the employee
+#input the rate per hour, number of hours, overtime hours, absent hours, and tardy hours per payday of the employee
 print("                                                                                                               ")
 Rate_per_hour = float(input("Enter Employee's rate per hour: "))
 Hours_per_payday = float(input("Enter Employee's number of hours per payday: "))
@@ -40,7 +40,7 @@ Absent_hours_per_payday = float(input("Enter Employee's absent hours per payday:
 Honorarium = float(input("Enter Employee's honorarium: "))
 Tardy_hours_per_payday = float(input("Enter Employee's tardy hours per payday: "))
 
-#calculate the employee's basic pay, overtime, absences, and tardiness
+#calculate the employee's basic pay, overtime, absences, honorarium, and tardiness
 print("                                                                                                               ")
 Basic_pay = Rate_per_hour * Hours_per_payday
 Overtime = Overtime_hours_per_payday * Rate_per_hour
@@ -116,10 +116,17 @@ elif 18750 <= gross_earnings <= 19249.99:
 elif 19250 <= gross_earnings <= 19749.99:
     SSS_contribution = 877.00
 else:
-    SSS_contribution = 900
+    SSS_contribution = 900.00
 
-#calculate the Philhealth contribution
-Philhealth_contribution = gross_earnings * 0.05
+#determine the conditional statement of Philhealth contribution
+if gross_earnings < 10000:
+    Philhealth_contribution = 0
+elif gross_earnings == 10000:
+    Philhealth_contribution = 500
+elif 10000.01 <= gross_earnings <= 99999.99:
+    Philhealth_contribution = gross_earnings * 0.05
+else:
+    Philhealth_contribution = 5000
 
 #determine the conditional statement of withholding tax
 if 0 <= gross_earnings < 10417:
@@ -137,12 +144,10 @@ else:
 
 #calculate for deduction
 Deductions = Absences + Tardiness + Withholding_tax + Philhealth_contribution + SSS_contribution + HDMF_contribution
-
-#calculate for net pay
 Net_pay = gross_earnings - Deductions
 
 #display the following
-print("=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=")
+print("=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-PRINTED SALARY INFORMATION-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=")
 print("Company name:", Company)
 print("Department:", Department)
 print("Employee code:", Employee_code)
